@@ -9,4 +9,6 @@
   :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.1"]
                                   [org.clojure/clojurescript "1.10.597"]]}}
   :source-paths ["src"]
-  :test-paths ["test"])
+  :test-paths ["test"]
+  :deploy-repositories [["clojars" {:url           "https://clojars.org/repo"
+                                    :sign-releases false}]])
