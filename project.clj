@@ -1,5 +1,5 @@
 (defproject tech.ardour/logging "0.0.1"
-  :description "Ardour Tech Logging Tool"
+  :description "Ardour Tech Logging Tool for Clojure(Script)"
   :url "https://github.com/ArdourTech/logging"
   :license {:name         "Eclipse Public License - v 1.0"
             :url          "http://www.eclipse.org/legal/epl-v10.html"
