@@ -1,6 +1,7 @@
 ## 0.0.2
 
 * Fix: Used `assoc-some` from `tech.ardour/utensil`
+* Fix: Used `epoch-millis` from `tech.ardour/utensil`
 
 ## 0.0.1
 

@@ -4,11 +4,7 @@
     [taoensso.timbre :as timbre]
     [tech.ardour.utensil :as u]))
 
-(defn- current-time-ms []
-  #?(:cljs (js/Date.now)
-     :clj  (System/currentTimeMillis)))
-
-(defonce ^:private init-time (current-time-ms))
+(defonce ^:private init-time (u/epoch-millis))
 
 (defn- uptime [inst]
   (- (inst-ms inst) init-time))
