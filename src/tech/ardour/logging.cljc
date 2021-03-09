@@ -1,18 +1,8 @@
-(ns tech.ardour.logging.core
-  #?(:cljs (:require-macros [tech.ardour.logging.core]))
+(ns tech.ardour.logging
+  #?(:cljs (:require-macros [tech.ardour.logging]))
   (:require
-    [taoensso.timbre :as timbre]))
-
-(defn assoc-some
-  ([m k v]
-   (if (some? v)
-     (assoc m k v)
-     m))
-  ([m k v & kvs]
-   (let [ret (assoc-some m k v)]
-     (if (and kvs (next kvs))
-       (recur ret (first kvs) (second kvs) (nnext kvs))
-       ret))))
+    [taoensso.timbre :as timbre]
+    [tech.ardour.utensil :as u]))
 
 (defn- current-time-ms []
   #?(:cljs (js/Date.now)
@@ -67,7 +57,7 @@
                                          :time  (uptime instant)
                                          :level level
                                          :unix  (inst-ms instant)}
-                                  true (assoc-some
+                                  true (u/assoc-some
                                          :ns (when ?ns-str (str ?ns-str (when ?line (str ":" ?line))))
                                          :thread #?(:clj (.getName (Thread/currentThread)) :cljs nil)
                                          :context *context*
@@ -83,7 +73,7 @@
                                                  (and (pos? arg-count)
                                                       (seq args))
                                                  args))
-                                  ?err (assoc-some
+                                  ?err (u/assoc-some
                                          :err (#?(:clj Throwable->map :cljs Error->map) ?err)
                                          :file ?file
                                          :line ?line))]
